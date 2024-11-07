@@ -20,11 +20,18 @@ namespace Tarea_PrgramacionInventario
             productos.Add(producto);
         }
 
-        public IEnumerable<Producto> FiltrarYOrdenarProductos(decimal precioMinimo)
+        public Producto ActualizarPrecio(string nombre, decimal nuevoPrecio)
         {
-            return productos
-                .Where(p => p.Precio > precioMinimo)
-                .OrderBy(p => p.Precio);
+            var producto = productos.FirstOrDefault(p => p.Nombre == nombre);
+            if (producto != null)
+            {
+                producto.Precio = nuevoPrecio;
+                return producto;
+            }
+            return null;
         }
+
+
+
     }
 }
