@@ -28,17 +28,7 @@ namespace Tarea_PrgramacionInventario
             }
 
             
-            Console.Write("\nIngrese el precio mínimo para filtrar los productos: ");
-            decimal precioMinimo = decimal.Parse(Console.ReadLine());
 
-            
-            var productosFiltrados = inventario.FiltrarYOrdenarProductos(precioMinimo);
-
-            Console.WriteLine("\nProductos filtrados y ordenados:");
-            foreach (var producto in productosFiltrados)
-            {
-                Console.WriteLine(producto);
-            }
         }
     }
 }

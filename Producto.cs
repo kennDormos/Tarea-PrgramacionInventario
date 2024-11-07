@@ -17,9 +17,9 @@ namespace Tarea_PrgramacionInventario
             Precio = precio;
         }
 
-        public override string ToString()
+        public void MostrarInformacion()
         {
-            return $"Nombre: {Nombre}, Precio: {Precio}";
+            Console.WriteLine( $"Nombre: {Nombre}, Precio: {Precio}");
         }
     }
 

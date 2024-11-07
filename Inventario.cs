@@ -31,6 +31,17 @@ namespace Tarea_PrgramacionInventario
             return null;
         }
 
+        public bool EliminarProducto(string nombre)
+        {
+            var producto = productos.FirstOrDefault(p => p.Nombre == nombre);
+            if (producto != null)
+            {
+                productos.Remove(producto);
+                return true; 
+            }
+            return false; 
+        }
+
 
 
     }
