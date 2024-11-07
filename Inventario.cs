@@ -67,5 +67,11 @@ namespace Tarea_PrgramacionInventario
             Console.WriteLine($"Producto más barato: {productoMasBarato.Nombre} - {productoMasBarato.Precio:C}");
         }
 
+        public List<Producto> ObtenerProductos()
+        {
+            return productos;
+        }
+
+
     }
 }
