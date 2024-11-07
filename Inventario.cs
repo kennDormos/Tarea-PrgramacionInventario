@@ -42,6 +42,11 @@ namespace Tarea_PrgramacionInventario
             return false; 
         }
 
+        public int ContarProductosPorRango(decimal precioMinimo, decimal precioMaximo)
+        {
+            return productos.Count(p => p.Precio >= precioMinimo && p.Precio <= precioMaximo);
+        }
+
 
 
     }
