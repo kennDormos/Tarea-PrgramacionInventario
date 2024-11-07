@@ -47,7 +47,25 @@ namespace Tarea_PrgramacionInventario
             return productos.Count(p => p.Precio >= precioMinimo && p.Precio <= precioMaximo);
         }
 
+        public void GenerarReporteResumido()
+        {
+            if (productos.Count == 0)
+            {
+                Console.WriteLine("No hay productos en el inventario.");
+                return;
+            }
 
+            int totalProductos = productos.Count;
+            decimal precioPromedio = productos.Average(p => p.Precio);
+            var productoMasCaro = productos.OrderByDescending(p => p.Precio).First();
+            var productoMasBarato = productos.OrderBy(p => p.Precio).First();
+
+            Console.WriteLine("--- Reporte Resumido del Inventario ---");
+            Console.WriteLine($"Número total de productos: {totalProductos}");
+            Console.WriteLine($"Precio promedio de todos los productos: {precioPromedio:C}");
+            Console.WriteLine($"Producto más caro: {productoMasCaro.Nombre} - {productoMasCaro.Precio:C}");
+            Console.WriteLine($"Producto más barato: {productoMasBarato.Nombre} - {productoMasBarato.Precio:C}");
+        }
 
     }
 }
