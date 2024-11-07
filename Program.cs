@@ -23,17 +23,25 @@ namespace Tarea_PrgramacionInventario
                 Console.WriteLine("7. Salir");
                 Console.Write("Opción: ");
             }
-            
 
+            int opcion = Convert.ToInt32(Console.ReadLine());
+            if (opcion < 1 || opcion > 7)
+            {
+                Console.WriteLine("Por favor, ingrese una opción válida (1-7).");
+                
+            }
             
         }
     }
 
-
-
-
-
-
 }
+    
+
+
+
+
+
+
+
     
 
