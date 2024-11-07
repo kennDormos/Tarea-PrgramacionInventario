@@ -15,7 +15,7 @@ namespace Tarea_PrgramacionInventario
             productos = new List<Producto>();
         }
 
-        public void AgregarProductos(Producto producto)
+        public void AgregarProducto(Producto producto)
         {
             productos.Add(producto);
         }
