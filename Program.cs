@@ -13,6 +13,7 @@ namespace Tarea_PrgramacionInventario
 
             while (!salir)
             {
+                Console.WriteLine("");
                 Console.WriteLine("Seleccione una opción:");
                 Console.WriteLine("1. Agregar Producto");
                 Console.WriteLine("2. Actualizar Precio de un Producto");
@@ -40,11 +41,15 @@ namespace Tarea_PrgramacionInventario
                     case 3:
                         EliminarProducto(inventario);
                         break;
-
                     case 4:
                         ContarProductosPorRango(inventario);
                         break;
-                    
+                    case 5:
+                        VerInventario(inventario);
+                        break;
+                    case 6:
+                        inventario.GenerarReporteResumido();
+                        break;
                     case 7:
                         salir = true;
                         Console.WriteLine("Saliendo del sistema. ¡Gracias!");
