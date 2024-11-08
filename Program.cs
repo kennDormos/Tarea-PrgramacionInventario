@@ -159,8 +159,15 @@ namespace Tarea_PrgramacionInventario
                 int cantidadEnRango = inventario.ContarProductosPorRango(precioMinimo, precioMaximo);
                 Console.WriteLine($"Cantidad de productos con precio entre {precioMinimo:C} y {precioMaximo:C}: {cantidadEnRango}");
             }
+            static void VerInventario(Inventario inventario)
+            {
+                Console.WriteLine("\nProductos en inventario:");
+                foreach (var producto in inventario.ObtenerProductos())
+                {
+                    producto.MostrarInformacion();
+                }
+            }
 
-    
 
 
         }
