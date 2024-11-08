@@ -71,6 +71,41 @@ namespace Tarea_PrgramacionInventario
 
 
             }
+
+            static void ActualizarPrecioProducto(Inventario inventario)
+            {
+                Console.Write("Nombre del Producto a Actualizar: ");
+                string nombreProducto = Console.ReadLine();
+                while (string.IsNullOrWhiteSpace(nombreProducto))
+                {
+                    Console.Write("El nombre no puede estar vacío. Ingrese el nombre del Producto: ");
+                    nombreProducto = Console.ReadLine();
+                }
+                decimal nuevoPrecio;
+                while (true)
+                {
+                    Console.Write("Ingrese el nuevo precio: ");
+                    if (!decimal.TryParse(Console.ReadLine(), out  nuevoPrecio) && nuevoPrecio > 0)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Precio inválido. Asegúrese de ingresar un número positivo.");
+                    }
+                }
+
+
+                var productoActualizado = inventario.ActualizarPrecio(nombreProducto, nuevoPrecio);
+                if (productoActualizado != null)
+                {
+                    Console.WriteLine($"Precio del producto '{productoActualizado.Nombre}' actualizado a {productoActualizado.Precio:C}.");
+                }
+                else
+                {
+                    Console.WriteLine("Producto no encontrado.");
+                }
+            }
         }
     }
 }
