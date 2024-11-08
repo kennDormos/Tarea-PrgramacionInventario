@@ -34,6 +34,13 @@ namespace Tarea_PrgramacionInventario
                     case 1:
                         AgregarProducto(inventario);
                         break;
+                    case 2:
+                        ActualizarPrecioProducto(inventario);
+                        break;
+                    case 3:
+                        EliminarProducto(inventario);
+                        break;
+                    
                     case 7:
                         salir = true;
                         Console.WriteLine("Saliendo del sistema. ¡Gracias!");
@@ -81,20 +88,21 @@ namespace Tarea_PrgramacionInventario
                     Console.Write("El nombre no puede estar vacío. Ingrese el nombre del Producto: ");
                     nombreProducto = Console.ReadLine();
                 }
+
                 decimal nuevoPrecio;
+                
                 while (true)
                 {
                     Console.Write("Ingrese el nuevo precio: ");
-                    if (!decimal.TryParse(Console.ReadLine(), out  nuevoPrecio) && nuevoPrecio > 0)
+                    if (decimal.TryParse(Console.ReadLine(), out nuevoPrecio) && nuevoPrecio > 0)
                     {
-                        break;
+                        break; 
                     }
                     else
                     {
                         Console.WriteLine("Precio inválido. Asegúrese de ingresar un número positivo.");
                     }
                 }
-
 
                 var productoActualizado = inventario.ActualizarPrecio(nombreProducto, nuevoPrecio);
                 if (productoActualizado != null)
@@ -106,6 +114,29 @@ namespace Tarea_PrgramacionInventario
                     Console.WriteLine("Producto no encontrado.");
                 }
             }
+
+            static void EliminarProducto(Inventario inventario)
+            {
+                Console.Write("Ingrese el nombre del Producto a eliminar: ");
+                string nombreProducto = Console.ReadLine();
+                while (string.IsNullOrWhiteSpace(nombreProducto))
+                {
+                    Console.Write("El nombre no puede estar vacío. Ingrese el nombre del Producto a eliminar: ");
+                    nombreProducto = Console.ReadLine();
+                }
+
+                bool eliminado = inventario.EliminarProducto(nombreProducto);
+                if (eliminado)
+                {
+                    Console.WriteLine($"El producto '{nombreProducto}' ha sido eliminado.");
+                }
+                else
+                {
+                    Console.WriteLine($"El producto '{nombreProducto}' no se encontró en el inventario.");
+                }
+            }
+
+            
         }
     }
 }

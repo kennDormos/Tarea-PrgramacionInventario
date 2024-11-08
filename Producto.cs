@@ -19,7 +19,7 @@ namespace Tarea_PrgramacionInventario
 
         public void MostrarInformacion()
         {
-            Console.WriteLine( $"Nombre: {Nombre}, Precio: {Precio}");
+            Console.WriteLine( $"Nombre: {Nombre}, Precio: {Precio:C}");
         }
     }
 
