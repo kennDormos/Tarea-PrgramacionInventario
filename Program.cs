@@ -40,6 +40,10 @@ namespace Tarea_PrgramacionInventario
                     case 3:
                         EliminarProducto(inventario);
                         break;
+
+                    case 4:
+                        ContarProductosPorRango(inventario);
+                        break;
                     
                     case 7:
                         salir = true;
@@ -136,7 +140,29 @@ namespace Tarea_PrgramacionInventario
                 }
             }
 
-            
+            static void ContarProductosPorRango(Inventario inventario)
+            {
+                Console.Write("Ingrese el precio mínimo: ");
+                if (!decimal.TryParse(Console.ReadLine(), out decimal precioMinimo) || precioMinimo < 0)
+                {
+                    Console.WriteLine("Precio mínimo inválido. Asegúrese de ingresar un número positivo.");
+                    return;
+                }
+
+                Console.Write("Ingrese el precio máximo: ");
+                if (!decimal.TryParse(Console.ReadLine(), out decimal precioMaximo) || precioMaximo < precioMinimo)
+                {
+                    Console.WriteLine("Precio máximo inválido. Asegúrese de que sea mayor o igual al precio mínimo.");
+                    return;
+                }
+
+                int cantidadEnRango = inventario.ContarProductosPorRango(precioMinimo, precioMaximo);
+                Console.WriteLine($"Cantidad de productos con precio entre {precioMinimo:C} y {precioMaximo:C}: {cantidadEnRango}");
+            }
+
+    
+
+
         }
     }
 }
